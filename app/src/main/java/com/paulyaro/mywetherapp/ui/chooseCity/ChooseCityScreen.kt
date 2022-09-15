@@ -1,5 +1,6 @@
 package com.paulyaro.mywetherapp.ui.chooseCity
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,31 +18,43 @@ import androidx.navigation.NavController
 import com.paulyaro.mywetherapp.ui.util.Screen
 
 @Composable
-fun ChooseCityScreen(navController : NavController) {
-    Column (
+fun ChooseCityScreen(navController: NavController) {
+
+    Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
             .padding(24.dp)
     ) {
+
         val (cityName, setCityName) = remember { mutableStateOf("") }
-        Text(text = "My Weather App ", fontSize = 24.sp)
+
+        Text(text = "My Weather app", fontSize = 32.sp)
+
         Spacer(modifier = Modifier.height(16.dp))
-        TextField(value = cityName, onValueChange ={ setCityName(it) },
+
+        TextField(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(8.dp)),
             colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.background),
-            label = { Text(text = "city")},
-            textStyle = TextStyle(fontSize = 16.sp)
+            label = { Text(text = "City") },
+            textStyle = TextStyle(
+                fontSize = 16.sp
+            ),
+            value = cityName,
+            onValueChange = {
+                setCityName(it)
+            }
         )
-        Spacer(modifier = Modifier.height(16.dp))
+
+        Spacer(modifier = Modifier.height(24.dp))
+
         Button(
             onClick = {
-                if (cityName.isEmpty()) {
+                if (cityName.isNotBlank())
                     navController.navigate(Screen.WeatherScreen.route + cityName)
-                }
             },
             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.secondary),
             shape = RoundedCornerShape(8.dp),
