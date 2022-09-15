@@ -19,7 +19,7 @@ fun Navigation() {
         }
 
         composable(Screen.WeatherScreen.route + "{city}") { navBackStackEntry ->
-            val city = navBackStackEntry.arguments?.getString("city") ?: "New York"
+            val city = navBackStackEntry.arguments?.getString("city") ?: "Paris"
             WeatherScreen(city = city)
         }
     }
