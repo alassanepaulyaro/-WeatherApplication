@@ -9,3 +9,11 @@
 
 #API_KEY= {value_api_key}
 
+
+### Screenshot
+
+
+<img src="Screenshot_home_my_weather_app.png" alt="Alt Text" width="393" height="852">
+
+<img src="Screenshot_Detail_my_weather_app.png" alt="Alt Text" width="393" height="852">
+
